@@ -38,11 +38,28 @@ const play = (c) => {
 
   if (outcome === "win") {
     wins.value++;
+    verdict.value == "You Win!";
   } else if (outcome === "loss") {
     loss.value++;
+    verdict.value == "You Lose!";
   } else {
     draws.value++;
+    verdict.value == "It's a Draw!";
   }
+
+  saveGame();
+};
+
+const saveGame = () => {
+  localStorage.setItem("wins", wins.value);
+  localStorage.setItem("losses", losses.value);
+  localStorage.setItem("draws", draws.value);
+};
+
+const LoadGame = () => {
+  wins.value = localStorage.getItem("wins");
+  draws.value = localStorage.getItem("draws");
+  losses.value = localStorage.getItem("losses");
 };
 </script>
 
